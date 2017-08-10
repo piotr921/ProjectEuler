@@ -1,6 +1,9 @@
 package pl.javaacademy.euler;
 
+import java.util.BitSet;
 import java.util.Comparator;
+import java.util.IntSummaryStatistics;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 /*
@@ -11,9 +14,21 @@ public class Tmp {
     private static long lastGenerated = 21;
 
     public static void main(String[] args) {
-        LongStream.generate(Tmp::getNumber).limit(20)
+/*        LongStream.generate(Tmp::getNumber).limit(20)
                 .forEach(System.out::println);
-        LongStream.rangeClosed(1,20).boxed().sorted(Comparator.reverseOrder()).forEach(System.out::print);
+        LongStream.rangeClosed(1,20).boxed().sorted(Comparator.reverseOrder()).forEach(System.out::print);*/
+
+        final int limit = 1_000;
+        final BitSet sieve = new BitSet(limit+1);
+        final IntSummaryStatistics stats = IntStream.rangeClosed(2, limit)
+                .filter(x -> !sieve.get(x))
+                .peek(x -> {
+                    if (x*x < limit)
+                        for(int i = x; i <= limit; i+=x)
+                            sieve.set(i);
+                })
+                .summaryStatistics();
+        System.out.printf("%d", stats.getCount(), stats.getSum());
     }
 
     private static long getNumber() {
