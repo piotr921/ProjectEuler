@@ -14,11 +14,15 @@ public class Tmp {
     private static long lastGenerated = 21;
 
     public static void main(String[] args) {
+
+    }
+}
+
 /*        LongStream.generate(Tmp::getNumber).limit(20)
                 .forEach(System.out::println);
         LongStream.rangeClosed(1,20).boxed().sorted(Comparator.reverseOrder()).forEach(System.out::print);*/
 
-        final int limit = 1_000;
+/*        final int limit = 1_000;
         final BitSet sieve = new BitSet(limit+1);
         final IntSummaryStatistics stats = IntStream.rangeClosed(2, limit)
                 .filter(x -> !sieve.get(x))
@@ -35,5 +39,4 @@ public class Tmp {
         long next = lastGenerated - 1;
         lastGenerated = next;
         return next;
-    }
-}
+    }*/
