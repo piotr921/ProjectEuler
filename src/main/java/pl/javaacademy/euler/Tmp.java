@@ -16,8 +16,10 @@ public class Tmp {
     private static long lastGenerated = 21;
 
     public static void main(String[] args) {
-        HashMap<String, Integer> map = new HashMap<>();
-        map.put("a", 1);
+        char c = 5;
+        int i = 1;
+        i += c;
+        System.out.println(i);
     }
 }
 
